@@ -21,7 +21,7 @@ async function bootstrap() {
 
   await app.listen(3000).then((_: any) => {
     console.log('Server Listening');
-    new AppModule().startConnection();
+    new AppModule().startDbConnection();
   });
 }
 

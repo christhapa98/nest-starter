@@ -8,6 +8,7 @@ export default class DBService {
     'mongodb://localhost:27017/nest';
 
   connect(): any {
+    mongoose.set('strictQuery', true);
     return MongooseModule.forRoot(this.dbConnectionString);
   }
 

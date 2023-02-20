@@ -1,24 +1,30 @@
 import { Module } from '@nestjs/common';
-import mongoose from 'mongoose';
 import DBService from 'src/core/db/db.config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClientsModule } from './client/client.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [ClientsModule],
+  imports: [ClientsModule, UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
-  db = new DBService();
+  public db: DBService = new DBService();
 
-  /**
-   * @returns {any}
-   */
-  startConnection = async (): Promise<void> => {
-    mongoose.set('strictQuery', true);
-    await this.db.connect();
+  startDbConnection = async (): Promise<void> => {
+    try {
+      await this.db.connect();
+      console.log("DB Connected Successfully")
+    } catch (error) { console.log(error) }
   };
+
+  closeConnection = async (): Promise<void> => {
+    try {
+      await this.db.close();
+      console.log("DB Disconnected Successfully")
+    } catch (error) { console.log(error) }
+  }
 }

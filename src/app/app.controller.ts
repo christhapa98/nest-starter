@@ -1,25 +1,27 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Admin } from 'src/data/schema/admin.schema';
 import { AppService } from './app.service';
+
+interface LoginFormData { email: string; password: string };
+interface SignupFormData { email: string; password: string, name: string, contact: string };
 
 @Controller('/admin')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
   @Get('get')
   admin(): any {
     return this.appService.getAdmin();
   }
 
   @Post('login')
-  adminLogin(@Body() loginData: { email: string; password: string }): object {
+  adminLogin(@Body() loginData: LoginFormData): object {
     return this.appService.adminLogin(loginData);
   }
 
-  /**
-   * @param {any} 'signup'
-   * @returns {any}
-   */
+
   @Post('signup')
-  adminSignup(@Body() loginData: { email: string; password: string }): any {
-    return loginData;
+  adminSignup(@Res() response, @Body() signupFormData: SignupFormData): Admin {
+    console.log(response);
+    return new Admin();
   }
 }
