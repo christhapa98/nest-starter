@@ -1,7 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Res } from '@nestjs/common';
 
 @Injectable()
 export class Go {
-  error(): any {}
-  success(): any {}
+  constructor() { }
+
+  error({ error, message }) {
+  }
+  success(): any { }
 }

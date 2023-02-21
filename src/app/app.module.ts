@@ -1,30 +1,15 @@
 import { Module } from '@nestjs/common';
-import DBService from 'src/core/db/db.config';
+import { MongooseModule } from '@nestjs/mongoose';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AdminModule } from './admin/admin.module';
 import { ClientsModule } from './client/client.module';
-import { UsersModule } from './users/users.module';
+import { UsersModule } from './users/user.module';
 
 @Module({
-  imports: [ClientsModule, UsersModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost:27017/ok'),
+    AdminModule,
+    ClientsModule,
+    UsersModule],
 })
-export class AppModule {
-  public db: DBService = new DBService();
-
-  startDbConnection = async (): Promise<void> => {
-    try {
-      await this.db.connect();
-      console.log("DB Connected Successfully")
-    } catch (error) { console.log(error) }
-  };
-
-  closeConnection = async (): Promise<void> => {
-    try {
-      await this.db.close();
-      console.log("DB Disconnected Successfully")
-    } catch (error) { console.log(error) }
-  }
-}
+export class AppModule { }
