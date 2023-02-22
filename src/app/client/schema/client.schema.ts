@@ -14,7 +14,7 @@ export class Client {
   @Prop()
   password: string;
 
-  @Prop({ min: 7, max: 8, required: true })
+  @Prop({ minlength: 7, maxlength: 10, required: true })
   contact: number;
 
   @Prop()

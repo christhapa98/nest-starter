@@ -5,8 +5,10 @@ import { AdminService } from './admin.service';
 import { Admin, AdminSchema } from './schema/admin.schema';
 
 @Module({
-    imports: [MongooseModule.forFeature([{ name: Admin.name, schema: AdminSchema }])],
-    controllers: [AdminController],
-    providers: [AdminService],
+  imports: [
+    MongooseModule.forFeature([{ name: "Admin", schema: AdminSchema }]),
+  ],
+  controllers: [AdminController],
+  providers: [AdminService],
 })
 export class AdminModule { }
