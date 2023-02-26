@@ -1,18 +1,25 @@
 import { HttpException, Injectable, HttpStatus } from '@nestjs/common';
 
+interface ResponseDTO {
+  error?: any,
+  message: string,
+  status: any
+
+}
+
 @Injectable()
 export class Go {
   constructor() { }
 
-  error({
-    error,
-    message,
-    status,
-  }: {
-    error?: any;
-    message: string;
-    status: any;
-  }): HttpException {
+  /**
+   * Error Response
+   * @date 2023-02-23
+   * @param {any} error
+   * @param {string} message
+   * @param {any} status}:ResponseDTO
+   * @returns {any}
+   */
+  error({ error, message, status }: ResponseDTO): HttpException {
     throw new HttpException({ message, error, success: false }, status);
   }
 }

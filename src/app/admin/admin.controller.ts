@@ -14,29 +14,19 @@ export class AdminController {
   @ApiOkResponse({ status: 201, description: 'Admin Login Successfull' })
   @ApiNotFoundResponse({ status: 404, description: 'Admin not found' })
   async adminLogin(
-    @Res() res: any,
     @Body() loginData: LoginAdminDTO,
   ): Promise<Admin> {
     const admin: Admin = await this.adminService.login(loginData);
-    return res.json({
-      success: true,
-      data: admin,
-      message: 'Admin Login Successfull',
-    });
+    return admin
   }
 
   @Post('signup')
   @UseInterceptors(HashPasswordInterceptor)
   async adminSignup(
-    @Res() res: any,
     @Body() signupFormData: CreateAdminDTO,
   ): Promise<any> {
     const admin: Admin = await this.adminService.signup(signupFormData);
-    return res.json({
-      success: true,
-      data: admin,
-      message: 'Admin Created Successfull',
-    });
+    admin
   }
 
   @Post('update')
