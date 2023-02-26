@@ -26,7 +26,7 @@ export class AdminController {
     @Body() signupFormData: CreateAdminDTO,
   ): Promise<any> {
     const admin: Admin = await this.adminService.signup(signupFormData);
-    admin
+    return admin
   }
 
   @Post('update')

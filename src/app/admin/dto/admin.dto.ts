@@ -8,6 +8,8 @@ export class CreateAdminDTO {
   @ApiProperty()
   readonly email: string;
   @ApiProperty()
+  readonly contact: number;
+  @ApiProperty()
   readonly image: string;
 }
 

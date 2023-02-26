@@ -26,6 +26,6 @@ export class MailerService {
    * @returns {any}
    */
   async sendMail(mailOption: MailOption): Promise<any> {
-    await this.transporter.sendMail(mailOption);
+    // await this.transporter.sendMail(mailOption);
   }
 }

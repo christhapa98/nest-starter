@@ -14,7 +14,7 @@ export class AdminService {
 
   async login(loginData: LoginAdminDTO): Promise<Admin> {
     let email = loginData.email;
-    let admin = await this.admin.findOne({ email });
+    let admin = await this.admin.findOne({ email }, "-__v");
     if (admin) {
       const isValid: boolean = await new HashPasswordInterceptor().validate(
         admin.password,
