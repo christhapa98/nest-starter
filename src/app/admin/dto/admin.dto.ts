@@ -7,8 +7,6 @@ export class CreateAdminDTO {
   readonly password: string;
   @ApiProperty()
   readonly email: string;
-  @ApiProperty()
-  readonly image: string;
 }
 
 export class LoginAdminDTO {

@@ -4,8 +4,8 @@ import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Go } from 'src/core/common/response.common';
 import { ClientService } from '../client.service';
-import { Client, ClientDocument } from '../schema/client.schema';
-import { CreateClientDTO, ClientLoginDTO } from '../dto/client.dto';
+import { ClientDocument } from '../schema/client.schema';
+import { ClientLoginDTO } from '../dto/client.dto';
 import { HashPasswordInterceptor } from 'src/core/common/interceptors/hashpassword.interceptor';
 
 describe('ClientService', () => {

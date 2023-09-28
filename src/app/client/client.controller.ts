@@ -54,7 +54,7 @@ export class ClientController {
   async deleteClientById(@Query() query: any) {
     let id: string = query.id;
     const deleted: boolean = await this.clientService.deleteById(id)
-    return deleted;
+    return { success: true, data: true, message: "Client Deleted Successfully" };
   }
 
   @Post('forgetpassword')

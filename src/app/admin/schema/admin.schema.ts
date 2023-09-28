@@ -14,7 +14,7 @@ export class Admin {
   @Prop({ required: true })
   password: string;
 
-  @Prop({ required: true, min: 7, max: 10 })
+  @Prop({ required: false, min: 7, max: 10 })
   contact: number;
 
   @Prop()

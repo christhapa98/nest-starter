@@ -11,8 +11,8 @@ export class Category {
     @Prop({ default: true })
     isAvailable: boolean;
 
-    @Prop({ required: true, })
-    icon: boolean;
+    @Prop({ required: false, })
+    icon: string;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
