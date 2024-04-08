@@ -1,7 +1,7 @@
 export const port = 42000;
 
 //DB_CONNECTION
-export const DBURL = 'mongodb://127.0.0.1:27017/nest';
+export const DBURL = 'mongodb+srv://admin:password@123@mongodd.kfq7eob.mongodb.net/nest-starter';
 
 //NodeMailer_CREDENTIAL
 export const MAILER_SERVICE = 'gmail';
